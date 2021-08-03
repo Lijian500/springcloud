@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/account/account.iml" filepath="$PROJECT_DIR$/account/account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/account/account-api/account-api.iml" filepath="$PROJECT_DIR$/account/account-api/account-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/account/account-server/account-server.iml" filepath="$PROJECT_DIR$/account/account-server/account-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/demo.iml" filepath="$PROJECT_DIR$/user/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud.iml" filepath="$PROJECT_DIR$/springcloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-api.iml" filepath="$PROJECT_DIR$/user/user-api.iml" />
+    </modules>
+  </component>
+</project>
