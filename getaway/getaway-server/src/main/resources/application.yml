@@ -1,0 +1,6 @@
+
+server:
+  port: 9989
+spring:
+  application:
+    name: account

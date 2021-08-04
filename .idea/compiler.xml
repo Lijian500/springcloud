@@ -9,6 +9,7 @@
         <module name="account-api" />
         <module name="account-api (1)" />
         <module name="account-server" />
+        <module name="account-server (1)" />
         <module name="common" />
         <module name="demo" />
         <module name="order-api" />
@@ -18,9 +19,12 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="account" target="1.8" />
+      <module name="account (1)" target="1.8" />
+      <module name="account (2)" target="1.8" />
       <module name="account-api" target="1.8" />
-      <module name="account-api (1)" target="11" />
+      <module name="account-api (1)" target="1.8" />
       <module name="account-server" target="1.8" />
+      <module name="account-server (1)" target="1.8" />
       <module name="common" target="1.7" />
       <module name="demo" target="11" />
       <module name="getaway" target="1.8" />

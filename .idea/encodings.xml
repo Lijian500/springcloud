@@ -6,10 +6,9 @@
     <file url="file://$PROJECT_DIR$/account/account-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/account/account-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/getaway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getaway/getaway-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getaway/getaway-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/user" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/user" charset="UTF-8" />
   </component>
 </project>
