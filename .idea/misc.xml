@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/order/pom.xml" />
         <option value="$PROJECT_DIR$/getaway/getaway-api/pom.xml" />
         <option value="$PROJECT_DIR$/getaway/getaway-server/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
       </list>
     </option>
   </component>

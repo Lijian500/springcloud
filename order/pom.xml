@@ -6,12 +6,12 @@
 		<groupId>lj.springcloud.sample</groupId>
 		<artifactId>springcloud</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>account</artifactId>
+	<artifactId>order</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>account</name>
+	<name>order</name>
 	<packaging>pom</packaging>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -19,8 +19,8 @@
 	</properties>
 
 	<modules>
-		<module>account-api</module>
-		<module>account-server</module>
+		<module>order-api</module>
+		<module>order-server</module>
 	</modules>
 
 	<dependencies>

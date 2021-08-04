@@ -1,8 +1,8 @@
 package lj.springcloud.sample.account.contorller;
 
-import lj.springcloud.sample.getaway.api.client.TokenClient;
-import lj.springcloud.sample.getaway.domian.dto.UpdateDTO;
-import lj.springcloud.sample.getaway.domian.vo.UpdateVO;
+import lj.springcloud.sample.account.api.client.TokenClient;
+import lj.springcloud.sample.account.domian.dto.UpdateDTO;
+import lj.springcloud.sample.account.domian.vo.UpdateVO;
 import lj.springcloud.sample.common.domian.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,8 +1,6 @@
 package lj.springcloud.sample.common.domian;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lj.springcloud.sample.common.constant.ResultCodeConstant;
-import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
@@ -114,7 +112,6 @@ public class Result<T> {
      *
      * @return {@code true} 成功
      */
-    @JsonIgnore
     public boolean isSuccess() {
         return Objects.equals(this.getResultCode(), ResultCodeConstant.SUCCESS);
     }
