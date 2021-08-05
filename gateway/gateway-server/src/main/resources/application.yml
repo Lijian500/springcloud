@@ -1,6 +1,27 @@
-
 server:
-  port: 9989
+  port: 3000
 spring:
   application:
-    name: account
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true   #开启根据微服务名称自动转发
+          lower-case-service-id: true  #微服务名称以小写形式呈现
+      routes: # 路由可以有多个
+        - id: account-route
+          uri: lb://account
+          predicates:
+            - Path=/api/account/**
+          filters:
+            - StripPrefix=2
+        - id: order-route
+          uri: lb://order
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=2
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

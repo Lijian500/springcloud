@@ -2,7 +2,10 @@ package lj.springcloud.sample.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 /**
@@ -11,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author lijian
  * @date 2021-08-03 17:51
  */
+@ComponentScan(basePackages={"lj.springcloud.sample.order"})
+@EnableFeignClients(basePackages = {"lj.springcloud.sample"})
 @SpringBootApplication
 public class OrderApplication {
 
@@ -18,4 +23,12 @@ public class OrderApplication {
 		SpringApplication.run(OrderApplication.class, args);
 	}
 
+	@RestController
+	class TestController{
+
+		@GetMapping("demo")
+		public String test(){
+			return "fasdfa";
+		}
+	}
 }

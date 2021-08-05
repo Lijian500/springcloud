@@ -1,11 +1,11 @@
 package lj.springcloud.sample.getaway.api.fallback;
 
+import feign.hystrix.FallbackFactory;
 import lj.springcloud.sample.getaway.api.client.TokenClient;
 import lj.springcloud.sample.getaway.domian.dto.UpdateDTO;
 import lj.springcloud.sample.getaway.domian.vo.UpdateVO;
 import lj.springcloud.sample.common.domian.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 /**

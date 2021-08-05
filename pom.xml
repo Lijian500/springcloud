@@ -17,7 +17,7 @@
 	<properties>
         <java.version>1.8</java.version>
 
-        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
 
         <nacos.config.version>2.2.5.RELEASE</nacos.config.version>
@@ -27,7 +27,7 @@
 		<compiler.target.version>1.8</compiler.target.version>
 		<lombok.vseison>1.18.20</lombok.vseison>
         <alibaba.cloud.version>2.2.6.RELEASE</alibaba.cloud.version>
-        <cloud.openfeign.version>3.0.2</cloud.openfeign.version>
+        <cloud.openfeign.version>2.2.5.RELEASE</cloud.openfeign.version>
         <fastjson.version>1.2.70</fastjson.version>
         <nacos.version>2.0.2</nacos.version>
         <spring.validation.version>2.3.2.RELEASE</spring.validation.version>

@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.constraints.NotBlank;
 
@@ -25,7 +26,7 @@ public interface TokenClient {
      * @return {@link Result}
      */
     @GetMapping("/ping")
-    Result<String> ping(@Validated @NotBlank(message = "名称不能为空") String name);
+    Result<String> ping(@Validated @NotBlank(message = "名称不能为空")@RequestParam("name") String name);
 
     /**
      * 更新测试

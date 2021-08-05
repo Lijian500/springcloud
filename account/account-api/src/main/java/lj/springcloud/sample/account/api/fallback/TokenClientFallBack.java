@@ -1,11 +1,11 @@
 package lj.springcloud.sample.account.api.fallback;
 
+import feign.hystrix.FallbackFactory;
 import lj.springcloud.sample.account.domian.dto.UpdateDTO;
 import lj.springcloud.sample.account.domian.vo.UpdateVO;
 import lj.springcloud.sample.account.api.client.TokenClient;
 import lj.springcloud.sample.common.domian.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 /**
