@@ -1,10 +1,17 @@
 package lj.springcloud.sample.common.domian;
 
 import lj.springcloud.sample.common.constant.ResultCodeConstant;
+import lombok.Data;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.util.CollectionUtils;
 
-import java.util.Objects;
+import java.lang.reflect.Array;
+import java.lang.reflect.Method;
+import java.util.*;
 
+@Data
 public class Result<T> {
+
     /**
      * 不需要返回 resultData 时，使用该常量返回，减少JVM创建对象的时间
      */
@@ -203,4 +210,65 @@ public class Result<T> {
 //        }
 //        return JSONArray.parseArray(JSONObject.toJSONString(result.getResultData(), SerializerFeature.WriteMapNullValue));
 //    }
+
+	/**
+	 * 方法返回值
+	 * resultData 为null，或者当resultData为
+	 * String, 空串
+	 * Collections 空集合
+	 * Map        空map
+	 * 都会抛异常
+	 *
+	 * 如果接口返回值接受resultData=null的场景，请調用 {@linkplain #getNullable()}
+	 *
+	 * @return T 泛型对象
+	 * @throws Exception
+	 */
+	public T get() throws Exception{
+    	if (!isSuccess()){
+    		throw new Exception("远程調用失败");
+		}
+		if (resultData == null){
+    		throw new Exception("方法返回结果为null");
+		}
+
+		if (resultData instanceof String){
+			if (StringUtils.isBlank((String) resultData)) {
+				throw new Exception("方法返回为空字符串");
+			}
+		} else if (resultData instanceof Collection){
+			if (CollectionUtils.isEmpty((Collection<?>) resultData)) {
+				throw new Exception("方法返回为空集合");
+			}
+		} else if (resultData instanceof Map){
+			if (CollectionUtils.isEmpty((Map) resultData)) {
+				throw new Exception("方法返回为空map");
+			}
+		} else if (resultData.getClass().isArray()){
+			// TODO: 2021/9/17 这个地方会报异常 Argument is not an array
+			int length = Array.getLength(resultData.getClass().getComponentType());
+			System.out.println("length = " + length);
+			if(length == 0){
+				throw new Exception("方法返回数组对象为空");
+			}
+		}
+
+		return getResultData();
+	}
+
+
+	/**
+	 * 返回值可能为null, 如果不接受返回值为null的情况
+	 * 请調用{@linkplain #get()}
+	 *
+	 *
+	 * @return
+	 * @throws Exception
+	 */
+	public T getNullable() throws Exception{
+		if (!isSuccess()){
+			throw new Exception("远程調用失败");
+		}
+		return getResultData();
+	}
 }

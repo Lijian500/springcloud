@@ -8,6 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sun.applet.Main;
+
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * @author lijian
@@ -30,5 +34,37 @@ public class TokenController implements TokenClient {
 	@Override
 	public Result<UpdateVO> update(UpdateDTO updateDTO) {
 		return Result.success(new UpdateVO(889, updateDTO.getName()));
+	}
+
+
+
+	public static void main(String[] args) throws Exception{
+		//Result<String> result = Result.success("13353");
+		//Result<List<Object>> result1 = Result.success(Collections.emptyList());
+		//Result<Set<Object>> result2 = Result.success(Collections.emptySet());
+		//Result<Map> result3 = Result.success(Collections.EMPTY_MAP);
+		//Result<Map> result4 = Result.success(new TreeMap());
+		//System.out.println("result:" + result.get());
+		//System.out.println(result1.get());
+		//System.out.println("result2:" + result2.get());
+		//System.out.println("result3:" + result3.get());
+		//System.out.println("result4:" + result4.getNullable());
+		//int[] array = {2,3};
+		Integer[] array = {6, 1, 9, 3, 7};
+		Result<Integer[]> success = Result.success(array);
+
+//		Integer[] resultData = success.getResultData();
+//		if (resultData.getClass().isArray()) {
+//			Class<?> componentType = resultData.getClass().getComponentType();
+//			Integer[] integer = resultData.getClass().newInstance();
+//			System.out.println("这个长度 = " + integer.length);
+//			System.out.println(componentType);
+//			System.out.println("length = " + Array.getLength(array.getClass().getComponentType()));
+//			System.out.println(Array.getLength(componentType));
+//		}
+
+		//System.out.println(Arrays.toString(success.getNullable()));
+		 System.out.println(success.get());
+
 	}
 }
