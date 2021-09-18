@@ -12,116 +12,118 @@ import java.util.*;
 @Data
 public class Result<T> {
 
-    /**
-     * 不需要返回 resultData 时，使用该常量返回，减少JVM创建对象的时间
-     */
-    public static final Result SUCCESS = of(ResultCodeConstant.SUCCESS, "操作成功");
+	/**
+	 * 不需要返回 resultData 时，使用该常量返回，减少JVM创建对象的时间
+	 */
+	public static final Result SUCCESS = of(ResultCodeConstant.SUCCESS, "操作成功");
 
-  //  private static final Logger log = LoggerFactory.getLogger(Result.class);
+	public static final Result INIT = new Result();
 
-    private int resultCode;
-    private String resultMsg;
-    private T resultData;
+	//  private static final Logger log = LoggerFactory.getLogger(Result.class);
 
-    /**
-     * 推荐使用静态方法 success() failed() of() 创建对象
-     */
-    @Deprecated
-    public Result() {
-    }
+	private int resultCode;
+	private String resultMsg;
+	private T resultData;
 
-    /**
-     * 推荐使用静态方法 success() failed() of() 创建对象
-     */
-    @Deprecated
-    public Result(T resultData) {
-        this(SUCCESS.resultCode, SUCCESS.resultMsg, resultData);
-    }
+	/**
+	 * 推荐使用静态方法 success() failed() of() 创建对象
+	 */
+	@Deprecated
+	public Result() {
+	}
 
-    /**
-     * 推荐使用静态方法 success() failed() of() 创建对象
-     */
-    @Deprecated
-    public Result(int resultCode, String resultMsg, T resultData) {
-        this.resultCode = resultCode;
-        this.resultMsg = resultMsg;
-        this.resultData = resultData;
-    }
+	/**
+	 * 推荐使用静态方法 success() failed() of() 创建对象
+	 */
+	@Deprecated
+	public Result(T resultData) {
+		this(SUCCESS.resultCode, SUCCESS.resultMsg, resultData);
+	}
 
-    public int getResultCode() {
-        return resultCode;
-    }
+	/**
+	 * 推荐使用静态方法 success() failed() of() 创建对象
+	 */
+	@Deprecated
+	public Result(int resultCode, String resultMsg, T resultData) {
+		this.resultCode = resultCode;
+		this.resultMsg = resultMsg;
+		this.resultData = resultData;
+	}
 
-    public void setResultCode(int resultCode) {
-        this.resultCode = resultCode;
-    }
+	public int getResultCode() {
+		return resultCode;
+	}
 
-    public String getResultMsg() {
-        return resultMsg;
-    }
+	public void setResultCode(int resultCode) {
+		this.resultCode = resultCode;
+	}
 
-    public void setResultMsg(String resultMsg) {
-        this.resultMsg = resultMsg;
-    }
+	public String getResultMsg() {
+		return resultMsg;
+	}
 
-    public T getResultData() {
-        return resultData;
-    }
+	public void setResultMsg(String resultMsg) {
+		this.resultMsg = resultMsg;
+	}
 
-    public void setResultData(T resultData) {
-        this.resultData = resultData;
-    }
+	public T getResultData() {
+		return resultData;
+	}
 
-    @Override
-    public String toString() {
-        return "Result{" +
-                "resultCode=" + resultCode +
-                ", resultMsg='" + resultMsg + '\'' +
-                ", resultData=" + resultData +
-                '}';
-    }
+	public void setResultData(T resultData) {
+		this.resultData = resultData;
+	}
 
-    /**
-     * 通过静态方法创建对象，推荐使用
-     */
-    public static <T> Result<T> of(int resultCode, String resultMsg) {
-        return of(resultCode, resultMsg, null);
-    }
+	@Override
+	public String toString() {
+		return "Result{" +
+				"resultCode=" + resultCode +
+				", resultMsg='" + resultMsg + '\'' +
+				", resultData=" + resultData +
+				'}';
+	}
 
-    /**
-     * 通过静态方法创建对象，推荐使用
-     */
-    public static <T> Result<T> of(int resultCode, String resultMsg, T resultData) {
-        if (ResultCodeConstant.SUCCESS != resultCode) {
-         //   log.info("code：{}，resultMsg={}，errorData={}", resultCode, resultMsg, resultData);
-        }
-        return new Result<>(resultCode, resultMsg, resultData);
-    }
+	/**
+	 * 通过静态方法创建对象，推荐使用
+	 */
+	public static <T> Result<T> of(int resultCode, String resultMsg) {
+		return of(resultCode, resultMsg, null);
+	}
 
-    /**
-     * 成功时调用
-     */
-    public static <T> Result<T> success(T resultData) {
-        return of(SUCCESS.resultCode, SUCCESS.resultMsg, resultData);
-    }
+	/**
+	 * 通过静态方法创建对象，推荐使用
+	 */
+	public static <T> Result<T> of(int resultCode, String resultMsg, T resultData) {
+		if (ResultCodeConstant.SUCCESS != resultCode) {
+			//   log.info("code：{}，resultMsg={}，errorData={}", resultCode, resultMsg, resultData);
+		}
+		return new Result<>(resultCode, resultMsg, resultData);
+	}
 
-
-    /**
-     * 失败时调用
-     */
-    public static <T> Result<T> failed(String resultMsg) {
-        return of(ResultCodeConstant.FAIL_MSG, resultMsg);
-    }
+	/**
+	 * 成功时调用
+	 */
+	public static <T> Result<T> success(T resultData) {
+		return of(SUCCESS.resultCode, SUCCESS.resultMsg, resultData);
+	}
 
 
-    /**
-     * 是否成功
-     *
-     * @return {@code true} 成功
-     */
-    public boolean isSuccess() {
-        return Objects.equals(this.getResultCode(), ResultCodeConstant.SUCCESS);
-    }
+	/**
+	 * 失败时调用
+	 */
+	public static <T> Result<T> failed(String resultMsg) {
+		return of(ResultCodeConstant.FAIL_MSG, resultMsg);
+	}
+
+
+	/**
+	 * 是否成功
+	 *
+	 * @return {@code true} 成功
+	 */
+	public boolean isSuccess() {
+		return Objects.equals(this.getResultCode(), ResultCodeConstant.SUCCESS);
+	}
 
 //    /**
 //     * 检查 Result 是否不为null
@@ -218,38 +220,34 @@ public class Result<T> {
 	 * Collections 空集合
 	 * Map        空map
 	 * 都会抛异常
-	 *
+	 * <p>
 	 * 如果接口返回值接受resultData=null的场景，请調用 {@linkplain #getNullable()}
 	 *
 	 * @return T 泛型对象
 	 * @throws Exception
 	 */
-	public T get() throws Exception{
-    	if (!isSuccess()){
-    		throw new Exception("远程調用失败");
+	public T get() throws Exception {
+		if (!isSuccess()) {
+			throw new Exception("远程調用失败");
 		}
-		if (resultData == null){
-    		throw new Exception("方法返回结果为null");
+		if (resultData == null) {
+			throw new Exception("方法返回结果为null");
 		}
-
-		if (resultData instanceof String){
+		if (resultData instanceof String) {
 			if (StringUtils.isBlank((String) resultData)) {
 				throw new Exception("方法返回为空字符串");
 			}
-		} else if (resultData instanceof Collection){
+		} else if (resultData instanceof Collection) {
 			if (CollectionUtils.isEmpty((Collection<?>) resultData)) {
 				throw new Exception("方法返回为空集合");
 			}
-		} else if (resultData instanceof Map){
+		} else if (resultData instanceof Map) {
 			if (CollectionUtils.isEmpty((Map) resultData)) {
 				throw new Exception("方法返回为空map");
 			}
-		} else if (resultData.getClass().isArray()){
-			// TODO: 2021/9/17 这个地方会报异常 Argument is not an array
-			int length = Array.getLength(resultData.getClass().getComponentType());
-			System.out.println("length = " + length);
-			if(length == 0){
-				throw new Exception("方法返回数组对象为空");
+		} else if (resultData.getClass().isArray()) {
+			if (Array.getLength(resultData) == 0) {
+				throw new Exception("方法返回空数组");
 			}
 		}
 
@@ -258,17 +256,36 @@ public class Result<T> {
 
 
 	/**
-	 * 返回值可能为null, 如果不接受返回值为null的情况
-	 * 请調用{@linkplain #get()}
+	 * 返回值可能为null, 集合、map、数组对象没有元素
 	 *
-	 *
+	 * 如果不接受返回值为null的情况，请調用{@linkplain #get()}
 	 * @return
 	 * @throws Exception
 	 */
-	public T getNullable() throws Exception{
-		if (!isSuccess()){
+	public T getNullable() throws Exception {
+		if (!isSuccess()) {
 			throw new Exception("远程調用失败");
 		}
 		return getResultData();
+	}
+
+
+	/**
+	 * result对象可能为null时，用该方法。
+	 *
+	 * @param result 調用返回对象
+	 * @return T
+	 * @throws Exception e
+	 */
+	public T  get(Result<T> result) throws Exception {
+		if (result == null) {
+			throw new Exception("result为null");
+		}
+
+		this.resultCode = result.getResultCode();
+		this.resultData = result.getResultData();
+		this.resultMsg = result.getResultMsg();
+
+		return get();
 	}
 }

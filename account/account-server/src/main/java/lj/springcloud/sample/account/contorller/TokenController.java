@@ -5,6 +5,7 @@ import lj.springcloud.sample.account.domian.dto.UpdateDTO;
 import lj.springcloud.sample.account.domian.vo.UpdateVO;
 import lj.springcloud.sample.common.domian.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,8 @@ import sun.applet.Main;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
 
 /**
  * @author lijian
@@ -37,8 +40,14 @@ public class TokenController implements TokenClient {
 	}
 
 
+	public static void main(String[] args) throws Exception {
+		Result<String> s = Result.success("sss");
+		String s1 = s.get(s);
 
-	public static void main(String[] args) throws Exception{
+		Result.INIT.get(s);
+
+
+
 		//Result<String> result = Result.success("13353");
 		//Result<List<Object>> result1 = Result.success(Collections.emptyList());
 		//Result<Set<Object>> result2 = Result.success(Collections.emptySet());
@@ -50,21 +59,25 @@ public class TokenController implements TokenClient {
 		//System.out.println("result3:" + result3.get());
 		//System.out.println("result4:" + result4.getNullable());
 		//int[] array = {2,3};
-		Integer[] array = {6, 1, 9, 3, 7};
-		Result<Integer[]> success = Result.success(array);
+//		int[] array = {4,5};
+//		Result<int[]> success = Result.success(array);
+//		System.out.println(Arrays.toString(success.getNullable()));
+//		System.out.println(Arrays.toString(success.get()));
 
-//		Integer[] resultData = success.getResultData();
-//		if (resultData.getClass().isArray()) {
-//			Class<?> componentType = resultData.getClass().getComponentType();
-//			Integer[] integer = resultData.getClass().newInstance();
-//			System.out.println("这个长度 = " + integer.length);
-//			System.out.println(componentType);
-//			System.out.println("length = " + Array.getLength(array.getClass().getComponentType()));
-//			System.out.println(Array.getLength(componentType));
-//		}
+		Arrays.asList(new HashMap<>(), new TreeMap<>(), new LinkedHashMap<>(), new WeakHashMap<>(),
+				new Hashtable<>(), new ConcurrentHashMap<>())
+				.forEach(TokenController::isMap);
 
-		//System.out.println(Arrays.toString(success.getNullable()));
-		 System.out.println(success.get());
+		Arrays.asList(new ArrayList<>(), new HashSet<>(), new LinkedList<>(), new HashSet<>())
+				.forEach(TokenController::isCollection);
 
+	}
+
+	private static <T> void isCollection(T t) {
+		System.out.println(t instanceof Collection);
+	}
+
+	private static <T> void isMap(T t) {
+		System.out.println(t instanceof Map);
 	}
 }
