@@ -226,7 +226,7 @@ public class Result<T> {
 	 * @return T 泛型对象
 	 * @throws Exception
 	 */
-	public T get() throws Exception {
+	private T get() throws Exception {
 		if (!isSuccess()) {
 			throw new Exception("远程調用失败");
 		}
@@ -258,13 +258,13 @@ public class Result<T> {
 	/**
 	 * 返回值可能为null, 集合、map、数组对象没有元素
 	 *
-	 * 如果不接受返回值为null的情况，请調用{@linkplain #get()}
+	 * 如果不接受返回值为null的情况，请调用{@linkplain #get()}
 	 * @return
 	 * @throws Exception
 	 */
-	public T getNullable() throws Exception {
+	private T getNullable() throws Exception {
 		if (!isSuccess()) {
-			throw new Exception("远程調用失败");
+			throw new Exception("远程调用失败");
 		}
 		return getResultData();
 	}

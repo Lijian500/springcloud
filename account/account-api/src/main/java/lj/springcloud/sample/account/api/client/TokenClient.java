@@ -19,21 +19,21 @@ import javax.validation.constraints.NotBlank;
 @FeignClient(value = "account", path = "token", fallbackFactory = TokenClientFallBack.class)
 public interface TokenClient {
 
-    /**
-     * 测试
-     *
-     * @param name name
-     * @return {@link Result}
-     */
-    @GetMapping("/ping")
-    Result<String> ping(@Validated @NotBlank(message = "名称不能为空")@RequestParam("name") String name);
+	/**
+	 * 测试
+	 *
+	 * @param name name
+	 * @return {@link Result}
+	 */
+	@GetMapping("/ping")
+	Result<String> ping(@Validated @NotBlank(message = "名称不能为空") @RequestParam("name") String name);
 
-    /**
-     * 更新测试
-     *
-     * @param updateDTO updateDTO
-     * @return {@link Result}
-     */
-    @PostMapping("/update")
-    Result<UpdateVO> update(@Validated UpdateDTO updateDTO);
+	/**
+	 * 更新测试
+	 *
+	 * @param updateDTO updateDTO
+	 * @return {@link Result}
+	 */
+	@PostMapping("/update")
+	Result<UpdateVO> update(@Validated UpdateDTO updateDTO);
 }

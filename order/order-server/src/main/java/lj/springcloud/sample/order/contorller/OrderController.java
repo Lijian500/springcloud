@@ -3,9 +3,12 @@ package lj.springcloud.sample.order.contorller;
 import com.alibaba.fastjson.JSON;
 import lj.springcloud.sample.account.api.client.TokenClient;
 import lj.springcloud.sample.common.domian.Result;
+import lj.springcloud.sample.common.execption.BusinessException;
+import lj.springcloud.sample.common.util.SpringContextUtil;
 import lj.springcloud.sample.order.api.client.OrderClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,9 +28,11 @@ public class OrderController implements OrderClient {
 
 	@Override
 	public Result<?> getOrder(String orderId) {
-		Result<String> ping = tokenClient.ping(orderId);
-		log.info("調用返回信息：【{}】", JSON.toJSONString(ping));
-		return Result.success(orderId);
+//		Result<String> ping = tokenClient.ping(orderId);
+//		log.info("調用返回信息：【{}】", JSON.toJSONString(ping));
+//		return Result.success(orderId);
+//
+		throw new BusinessException("zidingyiyicahng");
 	}
 
 	@GetMapping("/ping")
