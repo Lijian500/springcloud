@@ -2,15 +2,17 @@ package lj.springcloud.sample.account.api.client;
 
 import lj.springcloud.sample.account.api.fallback.TokenClientFallBack;
 import lj.springcloud.sample.account.domian.dto.UpdateDTO;
+import lj.springcloud.sample.account.domian.dto.UserSearchDTO;
+import lj.springcloud.sample.account.domian.model.User;
 import lj.springcloud.sample.account.domian.vo.UpdateVO;
 import lj.springcloud.sample.common.domian.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 /**
  * @author lijian
@@ -36,4 +38,22 @@ public interface TokenClient {
 	 */
 	@PostMapping("/update")
 	Result<UpdateVO> update(@Validated UpdateDTO updateDTO);
+
+	/**
+	 * 根据id获取用户
+	 *
+	 * @param userId 用户id
+	 * @return {@link Result}
+	 */
+	@GetMapping("/user/{userId}")
+	Result<User> getUser(@PathVariable("userId") Integer userId);
+
+	/**
+	 * 用户列表
+	 *
+	 * @param userSearchDTO 查询参数
+	 * @return {@link Result<List>}
+	 */
+	@GetMapping("/list")
+	Result<List<User>> listUser(@ModelAttribute @Validated UserSearchDTO userSearchDTO);
 }

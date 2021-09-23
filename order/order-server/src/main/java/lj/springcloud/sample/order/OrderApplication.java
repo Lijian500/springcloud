@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author lijian
  * @date 2021-08-03 17:51
  */
-@ComponentScan(basePackages = "lj.springcloud.sample.order")
 @EnableFeignClients(basePackages = "lj.springcloud.sample")
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "lj.springcloud.*")

@@ -1,0 +1,23 @@
+# 配置文件必须要bootstrap
+server:
+  port: 3006
+spring:
+  application:
+    name: account
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        namespace: ${spring.profiles.active}
+        server-addr: 127.0.0.1:8848
+        group: cq
+      config:
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yaml
+        group: cq
+        shared-configs:
+        - data-id: redis.yaml
+
+        - data-id: mysql.yaml

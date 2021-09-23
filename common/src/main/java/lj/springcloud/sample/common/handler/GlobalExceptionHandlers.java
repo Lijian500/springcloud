@@ -5,7 +5,6 @@ import lj.springcloud.sample.common.domian.Result;
 import lj.springcloud.sample.common.execption.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -18,19 +17,20 @@ public class GlobalExceptionHandlers {
 
 	@ExceptionHandler(ClientException.class)
 	public Result<?> handler(ClientException e) {
-		log.info("ClientException->>>>>>>>>>>>");
+		log.info(e.getMessage());
 		return Result.failed(e.getMessage());
 	}
 
 	@ExceptionHandler(BusinessException.class)
 	public Result<?> handler(BusinessException e) {
-		log.info("BusinessException->>>>>>>>>>>>");
+		log.info(e.getMessage());
 		return Result.failed(e.getMessage());
 	}
 
 	@ExceptionHandler(Exception.class)
 	public Result<?> handler(Exception e) {
-		log.info("exception->>>>>>>>>>>>");
+		e.printStackTrace();
+		log.info(e.getMessage());
 		return Result.failed(e.getMessage());
 	}
 }

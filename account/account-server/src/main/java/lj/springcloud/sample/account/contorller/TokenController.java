@@ -2,16 +2,18 @@ package lj.springcloud.sample.account.contorller;
 
 import lj.springcloud.sample.account.api.client.TokenClient;
 import lj.springcloud.sample.account.domian.dto.UpdateDTO;
+import lj.springcloud.sample.account.domian.dto.UserSearchDTO;
+import lj.springcloud.sample.account.domian.model.User;
 import lj.springcloud.sample.account.domian.vo.UpdateVO;
+import lj.springcloud.sample.account.service.UserService;
 import lj.springcloud.sample.common.domian.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.jni.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.applet.Main;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,21 +24,44 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @RestController
 @RequestMapping("/token")
+@RefreshScope
 @Slf4j
 public class TokenController implements TokenClient {
 
 	@Value("${server.port}")
 	private Integer port;
 
+	@Value("${demo.test}")
+	private String text;
+
+	@Value("${redis.port}")
+	private String redisPort;
+
+	@Value("${mysql.port}")
+	private String mysqlPort;
+
+	@Autowired
+	private UserService userService;
+
 	@Override
 	public Result<String> ping(String name) {
-		log.info("端口：{}", port);
-		return Result.success("success ping :" + name);
+		String text = "text: " + this.text + ", redisPort: " + redisPort + ", mysqlPort: " + mysqlPort;
+		return Result.success(text);
 	}
 
 	@Override
 	public Result<UpdateVO> update(UpdateDTO updateDTO) {
 		return Result.success(new UpdateVO(889, updateDTO.getName()));
+	}
+
+	@Override
+	public Result<User> getUser(Integer userId) {
+		return Result.success(userService.getUser(userId));
+	}
+
+	@Override
+	public Result<List<User>> listUser(UserSearchDTO userSearchDTO) {
+		return Result.success(userService.listUser(userSearchDTO));
 	}
 
 
@@ -45,7 +70,6 @@ public class TokenController implements TokenClient {
 		String s1 = s.get(s);
 
 		Result.INIT.get(s);
-
 
 
 		//Result<String> result = Result.success("13353");

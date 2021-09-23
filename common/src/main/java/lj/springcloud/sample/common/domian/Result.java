@@ -221,14 +221,14 @@ public class Result<T> {
 	 * Map        空map
 	 * 都会抛异常
 	 * <p>
-	 * 如果接口返回值接受resultData=null的场景，请調用 {@linkplain #getNullable()}
+	 * 如果接口返回值接受resultData=null的场景，请调用 {@linkplain #getNullable()}
 	 *
 	 * @return T 泛型对象
 	 * @throws Exception
 	 */
 	private T get() throws Exception {
 		if (!isSuccess()) {
-			throw new Exception("远程調用失败");
+			throw new Exception("远程调用失败");
 		}
 		if (resultData == null) {
 			throw new Exception("方法返回结果为null");

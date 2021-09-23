@@ -28,11 +28,9 @@ public class OrderController implements OrderClient {
 
 	@Override
 	public Result<?> getOrder(String orderId) {
-//		Result<String> ping = tokenClient.ping(orderId);
-//		log.info("調用返回信息：【{}】", JSON.toJSONString(ping));
-//		return Result.success(orderId);
-//
-		throw new BusinessException("zidingyiyicahng");
+		Result<String> ping = tokenClient.ping(orderId);
+		log.info("調用返回信息：【{}】", JSON.toJSONString(ping));
+		return Result.success(orderId);
 	}
 
 	@GetMapping("/ping")
